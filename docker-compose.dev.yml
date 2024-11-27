@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/app/src
+    env_file:
+      - .env.dev
+    ports:
+      - "8000:8000"
+    environment:
+      - AWS_EC2_METADATA_DISABLED=false
+      - AWS_DEFAULT_REGION=${AWS_REGION}
